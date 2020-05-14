@@ -7,9 +7,38 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
  isAuth = false;
- appareilOne="Frigo";
- appareilTwo = "Radio";
- appareilThree="Czikiki";
+ lastUpdate = new Promise((resolve, reject) => {
+   const date = new Date();
+   setTimeout(
+     () => {
+       resolve(date);
+
+     }, 2000
+   );
+ });
+
+ appareils = [
+   {
+     name: 'Frigo',
+     status: 'eteint'
+   },
+   {
+    name: 'Radio',
+    status: 'allume'
+  },
+  {
+    name: 'Tele',
+    status: 'eteint'
+  },
+  {
+    name: 'Lamp',
+    status: 'allume'
+  }
+
+ ];
+
+
+
 
 
  constructor() {
