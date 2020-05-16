@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component , OnInit} from '@angular/core';
+import { AppareilService} from './services/appareil.service';
 
 @Component({
   selector: 'app-root',
@@ -6,42 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
- isAuth = false;
- lastUpdate = new Promise((resolve, reject) => {
-   const date = new Date();
-   setTimeout(
-     () => {
-       resolve(date);
 
-     }, 2000
-   );
- });
+  isAuth = false;
 
- appareils = [
-   {
-     name: 'Frigo',
-     status: 'eteint'
-   },
-   {
-    name: 'Radio',
-    status: 'allume'
-  },
-  {
-    name: 'Tele',
-    status: 'eteint'
-  },
-  {
-    name: 'Lamp',
-    status: 'allume'
-  }
-
- ];
+  appareils: any[]; //un array de type any
 
 
 
 
-
- constructor() {
+ constructor(private appareilService: AppareilService) {
    setTimeout(
      () =>{
        this.isAuth = true;
@@ -49,7 +23,24 @@ export class AppComponent {
    );
  }
 
+ //pour que AppComponent puisse recupere les informatopns stockess ands AppareilSercice nous devons implementer la methode ngOnInit()
+ //umieszczamy po konstruktorze ale przed innymi metodami komponentu
+ //teraz mozemy odzyskac informacje z AppareilService w metodzie ngOnInit()
+
+ ngOnInit() {
+  this.appareils = this.appareilService.appareils;
+}
+
  onAllumer() {
-   console.log('On allume tout aaaaaaaaaaaa');
+  this.appareilService.switchOnAll();
  }
+
+ onEteindre() {
+  if(confirm('Etes-vous sûr de vouloir éteindre tous vos appareils ?')) {
+    this.appareilService.switchOffAll();
+  } else {
+    return null;
+  }
+}
+
 }

@@ -6,8 +6,8 @@
   <div class="row">
     <div class="col-xs-12">
       <h2>Mes appareils</h2>
-      <p> Mis a jour : {{lastUpdate | async |date}}</p>
-      <p> Mis a jour : {{lastUpdate | async | date: 'yMMMMEEEEd' | uppercase}}</p>
+     <!--  <p> Mis a jour : {{lastUpdate | async |date}}</p>
+      <p> Mis a jour : {{lastUpdate | async | date: 'yMMMMEEEEd' | uppercase}}</p>-->
       <ul class="list-group">
         <!-- <app-appareil [appareilName]="appareilOne" [appareilStatus]="'eteint'" ></app-appareil>
         <app-appareil [appareilName]="appareilTwo" [appareilStatus]="'allume'" ></app-appareil>
@@ -20,9 +20,12 @@
       
       
       </ul>
-      <button class="btn btn-success" 
+      <button class="btn btn-success"
       [disabled]="!isAuth"
-      (click)="onAllumer()">Tout allumer </button>
+      (click)="onAllumer()">Tout allumer</button>
+<button class="btn btn-danger"
+      [disabled]="!isAuth"
+      (click)="onEteindre()">Tout éteindre</button>
     </div>
   </div>
 </div>
