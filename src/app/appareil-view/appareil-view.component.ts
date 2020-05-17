@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AppareilService } from './../services/appareil.service';
 
 @Component({
@@ -9,6 +9,8 @@ import { AppareilService } from './../services/appareil.service';
 export class AppareilViewComponent implements OnInit {
   isAuth = false;
   appareils: any[];
+  @Input() id: number;
+
 
   lastUpdate = new Promise((resolve, reject) => {
     const date = new Date();

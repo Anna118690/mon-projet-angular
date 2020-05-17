@@ -19,5 +19,5 @@ export class SingleAppareilComponent implements OnInit {
     this.name = this.appareilService.getAppareilById(+id).name;
     this.status = this.appareilService.getAppareilById(+id).status;
 }
-
 }
+
