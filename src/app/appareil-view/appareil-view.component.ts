@@ -42,6 +42,4 @@ export class AppareilViewComponent implements OnInit {
     }
   }
 
-
-
 }
